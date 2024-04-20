@@ -11,8 +11,8 @@ class InvoiceLine extends Model
     use HasFactory;
 
     public $timestamps = false;
-    public function InvoiceDetail(): BelongsTo
+    public function InvoiceHead(): BelongsTo
     {
-        return $this->belongsTo(InvoiceDetail::class, "invoice_id", "id");
+        return $this->belongsTo(InvoiceHead::class, "invoice_id", "id");
     }
 }

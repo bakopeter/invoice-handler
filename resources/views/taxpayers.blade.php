@@ -12,14 +12,29 @@ Adózók
     <tbody>
     @foreach($taxpayers as $taxpayer)
         <tr>
-            <td><a href="{{ route('taxpayers.show', ['taxpayer' => $taxpayer]) }}">{{$taxpayer->taxPayerName}}</a></td>
+            <td>
+                <a href="{{ route('taxpayers.show', ['taxpayer' => $taxpayer]) }}">
+                    {{$taxpayer->taxPayerName}}
+                </a>
+            </td>
             <td>{{$taxpayer->bankAccountNumber}}</td>
-            <td>{{$taxpayer->postalCode}}, {{$taxpayer->city}}
-                {{$taxpayer->streetName}} {{$taxpayer->publicPlaceCategory}}
+            <td>
+                {{$taxpayer->postalCode}},
+                {{$taxpayer->city}}
+                {{$taxpayer->streetName}}
+                {{$taxpayer->publicPlaceCategory}}
                 {{$taxpayer->number}}.
             </td>
-            <td><a href="{{ route('taxpayers.edit', ['taxpayer' => $taxpayer]) }}">Szerkesztés</a></td>
-            <td><a href="{{ route('taxpayers.destroy', ['taxpayer' => $taxpayer]) }}">Törlés</a></td>
+            <td>
+                <a href="{{ route('taxpayers.edit', ['taxpayer' => $taxpayer]) }}">
+                    Szerkesztés
+                </a>
+            </td>
+            <td>
+                <a href="{{ route('taxpayers.destroy', ['taxpayer' => $taxpayer]) }}">
+                    Törlés
+                </a>
+            </td>
         </tr>
     @endforeach
     </tbody>

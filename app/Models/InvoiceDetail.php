@@ -11,10 +11,7 @@ class InvoiceDetail extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public function invoiceLine(): HasMany
-    {
-        return $this->hasMany(InvoiceLine::class);
-    }
+
     public function invoiceHead(): HasOne
     {
         return $this->hasOne(InvoiceHead::class);

@@ -9,6 +9,5 @@ class TaxNumber extends Model
 {
     use HasFactory;
 
-    protected $table = "taxnumber";
     public $timestamps = false;
 }

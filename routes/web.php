@@ -16,3 +16,5 @@ Route::patch('/taxpayers/{taxpayer}', [TaxPayerController::class, 'update'])->na
 Route::delete('taxpayers/{taxpayer}', [TaxPayerController::class, 'destroy'])->name('taxpayers.destroy');
 */
 Route::resource('taxpayers', TaxPayerController::class);
+
+Route::resource('invoiceheads',\App\Http\Controllers\InvoiceHeadController::class);

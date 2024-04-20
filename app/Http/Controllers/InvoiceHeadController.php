@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TaxPayer;
-use App\Http\Requests\StoreTaxPayerRequest;
-use App\Http\Requests\UpdateTaxPayerRequest;
+use App\Models\InvoiceHead;
+use App\Http\Requests\StoreInvoiceHeadRequest;
+use App\Http\Requests\UpdateInvoiceHeadRequest;
 
-class TaxPayerController extends Controller
+class InvoiceHeadController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('taxpayers', [
-            'taxpayers' => TaxPayer::all()
+        return view('invoiceheads', [
+            'invoiceheads' => InvoiceHead::all()
         ]);
     }
 
@@ -29,7 +29,7 @@ class TaxPayerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTaxPayerRequest $request)
+    public function store(StoreInvoiceHeadRequest $request)
     {
         //
     }
@@ -37,17 +37,15 @@ class TaxPayerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TaxPayer $taxpayer)
+    public function show(InvoiceHead $invoicehead)
     {
-        return view('taxpayer', [
-           'taxpayer' => $taxpayer
-        ]);
+        return view('invoicehead', ['invoicehead' => $invoicehead]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaxPayer $taxpayer)
+    public function edit(InvoiceHead $invoicehead)
     {
         //
     }
@@ -55,7 +53,7 @@ class TaxPayerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaxPayerRequest $request, TaxPayer $taxpayer)
+    public function update(UpdateInvoiceHeadRequest $request, InvoiceHead $invoicehead)
     {
         //
     }
@@ -63,7 +61,7 @@ class TaxPayerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaxPayer $taxpayer)
+    public function destroy(InvoiceHead $invoicehead)
     {
         //
     }
