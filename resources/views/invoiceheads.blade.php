@@ -11,16 +11,13 @@
     <tbody>
     @foreach($invoiceheads as $invoicehead)
         <tr>
-            <td>{{$invoicehead->supplier->taxPayerName ?? "Nem találom!"}}</td>
-            <td>{{$invoicehead->customer->taxPayerName ?? "Nem találom!"}}</td>
+            <td>{{$invoicehead->supplierTP->taxPayerName ?? "Nem találom!"}}</td>
+            <td>{{$invoicehead->customerTP->taxPayerName ?? "Nem találom!"}}</td>
             <td>{{$invoicehead->invoiceNumber}}</td>
             <td>{{$invoicehead->invoiceIssueDate}}</td>
             <td>
                 <a href="{{route('invoiceheads.show', ['invoicehead' => $invoicehead])}}">Részletek</a>
             </td>
-        </tr>
-        <tr>
-            <td colspan="2">Tábla kapcsolatai: <?php var_dump($invoicehead["relations"]); ?></td>
         </tr>
     @endforeach
 
