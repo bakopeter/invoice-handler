@@ -28,6 +28,6 @@ class InvoiceHead extends Model
     }
     public function invoiceLine(): HasMany
     {
-        return $this->hasMany(InvoiceLine::class);
+        return $this->hasMany(InvoiceLine::class, 'invoice_head_id', 'id');
     }
 }

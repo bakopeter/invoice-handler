@@ -13,6 +13,6 @@ class InvoiceLine extends Model
     public $timestamps = false;
     public function InvoiceHead(): BelongsTo
     {
-        return $this->belongsTo(InvoiceHead::class, "invoice_id", "id");
+        return $this->belongsTo(InvoiceHead::class, "invoice_head_id", "id");
     }
 }

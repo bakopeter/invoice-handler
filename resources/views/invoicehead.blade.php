@@ -10,7 +10,7 @@
     "invoiceVatAmount" => "603.00"
     "invoiceGrossAmount" => "12672.00"
 -->
-<?php dd($invoicehead->invoiceLine) ?>
+
 
 <table>
     <tr>
@@ -19,12 +19,12 @@
     <tr>
         <td colspan="3" style="text-align: left; width: 50%">
             <p>Szállító</p>
-            <p>{{$invoiceheads->supplierTP->taxPayerName ?? "Hiányzik"}}</p>
+            <p>{{$invoicehead->supplierTP->taxPayerName ?? "Hiányzik"}}</p>
             <p>
                 {{$invoicehead->supplierTP->postalCode}},
                 {{$invoicehead->supplierTP->city}}
                 {{$invoicehead->supplierTP->streetName}}
-                {{$$invoicehead->supplierTP->publicPlaceCategory}}
+                {{$invoicehead->supplierTP->publicPlaceCategory}}
                 {{$invoicehead->supplierTP->number}}.
             </p>
             <p>Bankszámlaszám:</p>
@@ -43,7 +43,7 @@
                 {{$invoicehead->customerTP->postalCode}},
                 {{$invoicehead->customerTP->city}}
                 {{$invoicehead->customerTP->streetName}}
-                {{$$invoicehead->customerTP->publicPlaceCategory}}
+                {{$invoicehead->customerTP->publicPlaceCategory}}
                 {{$invoicehead->customerTP->number}}.
             </p>
             <p>Bankszámlaszám:</p>

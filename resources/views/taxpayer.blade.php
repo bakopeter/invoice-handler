@@ -31,7 +31,9 @@
 </table>
 <hr>
 <h3>Adózó számlái</h3>
-<?php dd($taxpayer->invoiceHeadSupplier ?? null) ?>
+<?php dd($taxpayer->invoiceHeadSupplier[10]->invoiceLine) ?>
+
+
 <table>
     <tbody>
 

@@ -39,6 +39,7 @@ class InvoiceHeadController extends Controller
      */
     public function show(InvoiceHead $invoicehead)
     {
+        dd($invoicehead->invoiceLine);
         return view('invoicehead', ['invoicehead' => $invoicehead]);
     }
 
