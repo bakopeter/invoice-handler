@@ -26,7 +26,7 @@ class InvoiceHead extends Model
     {
         return $this->belongsTo(InvoiceDetail::class, 'invoicedetails_id', 'id');
     }
-    public function invoiceLine(): HasMany
+    public function invoiceLines(): HasMany
     {
         return $this->hasMany(InvoiceLine::class, 'invoice_head_id', 'id');
     }
