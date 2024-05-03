@@ -23,37 +23,8 @@ class StoreTaxPayerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lineDescription' => ['required', 'string', 'max:512'],
-            'lineNatureIndicator' => [
-                'required',
-                Rule::in('PRODUCT', 'SERVICE', 'OTHER')
-            ],
-            'quantity' => ['required', 'numeric'],
-            'unitOfMeasure' => ['PIECE', 'HOUR', 'PACKAGE', 'OTHER'],
-            'unitPrice' => ['required', 'numeric'],
-            'lineNetAmount' => ['required', 'numeric'],
-            'vatPercentage' => ['required', 'numeric'],
-            'lineVatAmount' => ['required', 'numeric'],
-            'lineGrossAmount' => ['required', 'numeric'],
-            'invoiceCategory' => [
-                Rule::in('NORMAL', 'SIMPLIFIED')
-            ],
-            'invoiceDeliveryDate' => ['required','date'],
-            'paymentDate' => ['required', 'date'],
-            'paymentMethod' => [
-                'required',
-                Rule::in( ['TRANSFER', 'CASH CARD', 'VOUCHER'])
-            ],
-            'currencyCode' => ['string'],
-            'exchangeRate' => ['numeric'],
-            //'smallBusinessIndicator' => ['boolean'],
-            'invoiceNetAmount' => ['required', 'numeric'],
-            'invoiceVatAmount' => ['required', 'numeric'],
-            'invoiceGrossAmount' => ['required', 'numeric'],
-            'invoiceNumber' => ['required', 'string', 'max:50', 'unique:invoice_heads,invoiceNumber'],
-            'invoiceIssueDate' => ['required'],
-            //'communityVatNumber' => ['string', 'min:0', 'max:20'],
-            //'individualExemption' => ['boolean'],
+            'communityVatNumber' => ['nullable', 'string', 'max:20'],
+            'individualExemption' => ['boolean'],
             'incorporation' => [
                 Rule::in(['', 'ORGANIZATION', 'SELF_EMPLOYED', 'TAXABLE_PERSON'])
             ],
@@ -61,22 +32,20 @@ class StoreTaxPayerRequest extends FormRequest
                 'required',
                 Rule::in(['DOMESTIC', 'PRIVATE_PERSON', 'OTHER'])
             ],
-            'bankAccountNumber' => ['required', 'string', 'max:255', 'unique:tax_payers,bankAccountNumber'],
+            //'bankAccountNumber' => ['required', 'string', 'max:255', 'unique:tax_payers,bankAccountNumber'],
             'taxPayerName' => ['required', 'string', 'max:512'],
-            'postalCode' => ['required', 'string', 'max:10'],
+            'postalCode' => ['required', 'string', 'min:4', 'max:10'],
             'city' => ['required', 'string', 'max:255'],
             'streetName' => ['required', 'string', 'max:255'],
-            'publicPlaceCategory' => ['required', 'string', 'max:50'],
-            'number' => ['string', 'max:50'],
-            //'additionalAddressDetail' => ['string', 'max:255'],
-            //'groupMemberTaxNumber->taxpayerId' => ['string', 'min:8', 'max:8'],
-            //'groupMemberTaxNumber->vatCode' => ['string', 'max:1'],
-            //'groupMemberTaxNumber->countyCode' => ['string', 'min:2', 'max:2'],
-            'taxNumber->taxpayerId' => ['string', 'min:8', 'max:8', 'unique:tax_numbers,taxpayerId'],
-            'taxNumber->vatCode' => ['string', 'max:1'],
-            'taxNumber->countyCode' => ['string', 'min:2', 'max:2'],
-            'supplierName' => ['required', 'string', 'max:512'],
-            'customerName' => ['required', 'string', 'max:512']
+            'publicPlaceCategory' => ['nullable', 'required', 'string', 'max:50'],
+            'number' => ['nullable', 'string', 'max:50'],
+            'additionalAddressDetail' => ['nullable', 'string', 'max:255'],
+            'groupMemberTaxNumber->taxpayerId' => ['nullable', 'string', 'min:8', 'max:8'],
+            'groupMemberTaxNumber->vatCode' => ['nullable', 'string', 'max:1'],
+            'groupMemberTaxNumber->countyCode' => ['nullable', 'string', 'min:2', 'max:2'],
+            'taxNumber->taxpayerId' => ['nullable', 'string', 'min:8', 'max:8', 'unique:tax_numbers,taxpayerId'],
+            'taxNumber->vatCode' => ['nullable', 'string', 'max:1'],
+            'taxNumber->countyCode' => ['nullable', 'string', 'min:2', 'max:2'],
         ];
     }
 }
