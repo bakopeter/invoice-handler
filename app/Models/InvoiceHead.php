@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class InvoiceHead extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
-    public $timestamps = false;
-    //protected $table = 'invoice_heads';
+    public $timestamps = true;
     public function supplierTP(): BelongsTo
     {
         return $this->belongsTo(TaxPayer::class, 'supplier_id', 'id');

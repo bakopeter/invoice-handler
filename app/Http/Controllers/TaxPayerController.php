@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InvoiceHead;
 use App\Models\TaxPayer;
 use App\Http\Requests\StoreTaxPayerRequest;
 use App\Http\Requests\UpdateTaxPayerRequest;
@@ -23,7 +24,7 @@ class TaxPayerController extends Controller
      */
     public function create()
     {
-        //
+        return view('taxpayer_create');
     }
 
     /**
@@ -65,6 +66,17 @@ class TaxPayerController extends Controller
      */
     public function destroy(TaxPayer $taxpayer)
     {
-        //
+        if ($taxpayer->invoiceHeadCustomer()->count() || $taxpayer->invoiceHeadSupplier()->count()) {
+            $message = "$taxpayer->taxPayerName nevű felhasználó csak a hozzá tartozó számlák módosítása, illetve törlése után távolítható el!";
+        } else if ($taxpayer->delete()) {
+            $message = "$taxpayer->taxPayerName nevű felhasználó törlése sikeres volt!";
+        } else {
+            $message = "$taxpayer->taxPayerName nevű felhasználó törlése sikertelen!";
+        }
+        return view('taxpayer', [
+           'taxpayer' => $taxpayer,
+           'message' => $message,
+           'display' => 'block'
+        ]);
     }
 }

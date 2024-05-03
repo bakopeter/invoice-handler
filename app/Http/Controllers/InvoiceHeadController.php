@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InvoiceDetail;
 use App\Models\InvoiceHead;
 use App\Http\Requests\StoreInvoiceHeadRequest;
 use App\Http\Requests\UpdateInvoiceHeadRequest;
+use App\Models\InvoiceLine;
 
 class InvoiceHeadController extends Controller
 {
@@ -39,7 +41,6 @@ class InvoiceHeadController extends Controller
      */
     public function show(InvoiceHead $invoicehead)
     {
-        //dd($invoicehead->invoiceLine);
         return view('invoicehead', ['invoicehead' => $invoicehead]);
     }
 
@@ -64,6 +65,16 @@ class InvoiceHeadController extends Controller
      */
     public function destroy(InvoiceHead $invoicehead)
     {
-        //
+        if ($invoicehead->delete())
+        {
+            $message = "$invoicehead->invoiceNumber számú számla sikeresen sztornózva lett!";
+        } else {
+            $message = "$invoicehead->invoiceNumber számú számla sztornózása sikertelen!";
+        }
+        return view('invoicehead', [
+            'invoicehead' => $invoicehead,
+            'message' => $message,
+            'display' => 'block'
+        ]);
     }
 }
