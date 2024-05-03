@@ -32,7 +32,7 @@ class TaxPayerController extends Controller
      */
     public function store(StoreTaxPayerRequest $request)
     {
-        //
+        return "Store";
     }
 
     /**

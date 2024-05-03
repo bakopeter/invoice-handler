@@ -43,7 +43,7 @@
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6 bg-body-tertiary p-3">
                     <h5 class="mb-3">Normál számla</h5>
                     <div style="display:{{$display ?? 'none'}}" class="display-7">
-                        <div class="alert alert-secondary" role="alert">{{$message ?? null}}</div>
+                        <div class="alert alert-danger" role="alert">{{$message ?? null}}</div>
                     </div>
                     @if($invoicehead->trashed())
                     <table style="width: 100%; border-top: #cbd5e0 solid 1px; m-10">

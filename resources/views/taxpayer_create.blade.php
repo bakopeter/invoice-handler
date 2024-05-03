@@ -44,31 +44,37 @@
         @csrf
         <div class="row">
             <div class="col-12 form-floating mb-3">
-                <input class="form-control" id="taxPayerName" type="text" placeholder="* Adóalany neve"/>
+                <input value="{{old('taxPayerName')}}" class="form-control" id="taxPayerName" name="taxPayerName" type="text" placeholder="* Adóalany neve"/>
                 <label class="ms-2" for="taxPayerName">* Adóalany neve</label>
+                @error('taxPayerName') <div class="alert alert-danger">{{$message}}</div> @enderror
             </div>
             <div class="col-4 form-floating mb-3">
-                <input class="form-control" id="postalCode" type="text" placeholder="* Irányítószám"/>
+                <input value="{{old('postalCode')}}" class="form-control" id="postalCode" name="postalCode" type="text" placeholder="* Irányítószám"/>
                 <label class="ms-2" for="postalCode">* Irányítószám</label>
+                @error('postalCode') <div class="alert alert-danger">{{$message}}</div> @enderror
             </div>
             <div class="col-8 form-floating mb-3">
-                <input class="form-control" id="city" type="text" placeholder="* Település"/>
+                <input value="{{old('city')}}" class="form-control" id="city" name="city" type="text" placeholder="* Település"/>
                 <label class="ms-2"  for="city">* Település</label>
+                @error('city') <div class="alert alert-danger">{{$message}}</div> @enderror
             </div>
             <div class="col-8 form-floating mb-3">
-                <input class="form-control" id="streetName" type="text" placeholder="* Közterület neve"/>
+                <input value="{{old('streetName')}}" class="form-control" id="streetName" name="streetName" type="text" placeholder="* Közterület neve"/>
                 <label class="ms-2" for="streetName">* Közterület neve</label>
+                @error('streetName') <div class="alert alert-danger">{{$message}}</div> @enderror
             </div>
             <div class="col-4 form-floating mb-3">
-                <input class="form-control" id="publicPlaceCategory" type="text" placeholder="* Közterület jellege"/>
+                <input value="{{old('publicPlaceCategory')}}" class="form-control" id="publicPlaceCategory" name="publicPlaceCategory" type="text" placeholder="* Közterület jellege"/>
                 <label class="ms-2" for="publicPlaceCategory">* Közterület jellege</label>
+                @error('publicPlaceCategory') <div class="alert alert-danger">{{$message}}</div> @enderror
             </div>
             <div class="col-4 form-floating mb-3">
-                <input class="form-control" id="number" type="text" placeholder="Házszám" data-sb-validations=""/>
+                <input value="{{old('number')}}" class="form-control" id="number" name="number" type="text" placeholder="Házszám" data-sb-validations=""/>
                 <label class="ms-2" for="number">Házszám</label>
+                @error('number') <div class="alert alert-danger">{{$message}}</div> @enderror
             </div>
             <div class="col-8 form-floating mb-3">
-                <input class="form-control" id="additionalAddressDetail" type="text" placeholder="További címadatok"
+                <input value="{{old('additionalAddressDetail')}}" class="form-control" id="additionalAddressDetail" name="additionalAddressDetail" type="text" placeholder="További címadatok"
                        data-sb-validations=""/>
                 <label class="ms-2" for="additionalAddressDetail">További címadatok</label>
             </div>
@@ -76,18 +82,21 @@
             <div class="col-12 form-floating mb-3">
                 <div class="input-group">
                     <div class="form-floating">
-                        <input class="form-control" id="taxpayerId" type="text" placeholder="Adó törzsszám"/>
-                        <label class="ms-2" for="taxpayerId">Törzsszám</label>
+                        <input value="{{old('taxNumber->taxpayerId')}}" class="form-control" id="taxNumber->taxpayerId" name="taxNumber->taxpayerId" type="text" placeholder="Adó törzsszám"/>
+                        <label class="ms-2" for="taxNumber->taxpayerId">Törzsszám</label>
+                        @error('taxNumber->taxpayerId') <div class="alert alert-danger">{{$message}}</div> @enderror
                     </div>
                     <div class="input-group-text">-</div>
                     <div class="form-floating">
-                        <input class="form-control" id="vatCode" type="text" placeholder="Áfakód"/>
-                        <label class="ms-2" for="vatCode">Áfakód</label>
+                        <input value="{{old('taxNumber->vatCode')}}" class="form-control" id="taxNumber->vatCode" name="taxNumber->vatCode" type="text" placeholder="Áfakód"/>
+                        <label class="ms-2" for="taxNumber->vatCode">Áfakód</label>
+                        @error('taxNumber->vatCode') <div class="alert alert-danger">{{$message}}</div> @enderror
                     </div>
                     <div class="input-group-text">-</div>
                     <div class="form-floating">
-                        <input class="form-control" id="countyCode" type="text" placeholder="Megyekód"/>
-                        <label class="ms-2" for="countyCode">Megyekód</label>
+                        <input value="{{old('taxNumber->countyCode')}}" class="form-control" id="taxNumber->countyCode" name="taxNumber->countyCode" type="text" placeholder="Megyekód"/>
+                        <label class="ms-2" for="taxNumber->countyCode">Megyekód</label>
+                        @error('taxNumber->countyCode') <div class="alert alert-danger">{{$message}}</div> @enderror
                     </div>
                 </div>
             </div>
@@ -95,57 +104,61 @@
             <div class="col-12 form-floating mb-3">
                 <div class="input-group">
                     <div class="form-floating">
-                        <input class="form-control" id="taxpayerId" type="text" placeholder="Adó törzsszám"/>
-                        <label class="ms-2" for="taxpayerId">Törzsszám</label>
+                        <input value="{{old('groupMemberTaxNumber->taxpayerId')}}" class="form-control" id="groupMemberTaxNumber->taxpayerId" name="groupMemberTaxNumber->taxpayerId" type="text" placeholder="Adó törzsszám"/>
+                        <label class="ms-2" for="groupMemberTaxNumber->taxpayerId">Törzsszám</label>
                     </div>
                     <div class="input-group-text">-</div>
                     <div class="form-floating">
-                        <input class="form-control" id="vatCode" type="text" placeholder="Áfakód"/>
-                        <label class="ms-2" for="vatCode">Áfakód</label>
+                        <input value="{{old('groupMemberTaxNumber->vatCode')}}" class="form-control" id="groupMemberTaxNumber->vatCode" name="groupMemberTaxNumber->taxpayerId" type="text" placeholder="Áfakód"/>
+                        <label class="ms-2" for="groupMemberTaxNumber->vatCode">Áfakód</label>
                     </div>
                     <div class="input-group-text">-</div>
                     <div class="form-floating">
-                        <input class="form-control" id="countyCode" type="text" placeholder="Megyekód"/>
-                        <label class="ms-2" for="countyCode">Megyekód</label>
+                        <input value="{{old('groupMemberTaxNumber->countyCode')}}" class="form-control" id="groupMemberTaxNumber->countyCode" name="groupMemberTaxNumber->taxpayerId" type="text" placeholder="Megyekód"/>
+                        <label class="ms-2" for="groupMemberTaxNumber->countyCode">Megyekód</label>
                     </div>
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="communityVatNumber" type="text" placeholder="Közösségi adószám"/>
+                <input value="{{old('communityVatNumber')}}" class="form-control" id="communityVatNumber" name="communityVatNumber" type="text" placeholder="Közösségi adószám"/>
                 <label class="ms-2" for="communityVatNumber">Közösségi adószám</label>
             </div>
-            <div class="form-floating mb-3">
-                <select class="form-select" id="incorporation" aria-label="Gazdasági típus">
-                    <option value=""></option>
-                    <option value="ORGANIZATION">Gazdasági társaság</option>
-                    <option value="SELF_EMPLOYED">Egyéni vállalkozó</option>
-                    <option value="TAXABLE_PERSON">Adószámos magánszemély</option>
+            <div class="col-12 col-lg-6 form-floating mb-3">
+                <select class="form-select" id="incorporation" name="incorporation" aria-label="Gazdasági típus">
+                    <option value="" @selected(old('incorporation') == '')></option>
+                    <option value="ORGANIZATION" @selected(old('incorporation') == 'ORGANIZATION')>Gazdasági társaság</option>
+                    <option value="SELF_EMPLOYED" @selected(old('incorporation') == 'SELF_EMPLOYED')>Egyéni vállalkozó</option>
+                    <option value="TAXABLE_PERSON" @selected(old('incorporation') == 'TAXABLE_PERSON')>Adószámos magánszemély</option>
                 </select>
                 <label class="ms-2" for="incorporation">Gazdasági típus</label>
+                @error('incorporation') <div class="alert alert-danger">{{$message}}</div> @enderror
             </div>
-            <div class="form-floating mb-3">
-                <select class="form-select" id="taxPayerVatStatus" aria-label="ÁFA sz. státusza">
-                    <option value=""> </option>
-                    <option value="DOMESTIC">Belföldi áfaalany</option>
-                    <option value="OTHER">Egyéb</option>
-                    <option value="PRIVATE_PERSON">Nem áfaalany (belföldi vagy külföldi) természetes személy</option>
+            <div class="col-12 col-lg-6 form-floating mb-3">
+                <select class="form-select" id="taxPayerVatStatus" name="taxPayerVatStatus" aria-label="* ÁFA sz. státusza">
+                    <option value="PRIVATE_PERSON" @selected(old('taxPayerVatStatus') == 'PRIVATE_PERSON')>Nem áfaalany (belföldi vagy külföldi) természetes személy</option>
+                    <option value="DOMESTIC" @selected(old('taxPayerVatStatus') == 'DOMESTIC')>Belföldi áfaalany</option>
+                    <option value="OTHER" @selected(old('taxPayerVatStatus') == 'OTHER')>Egyéb</option>
                 </select>
                 <label class="ms-2" for="taxPayerVatStatus">ÁFA sz. státusza</label>
             </div>
-            <div class="mb-3">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" id="individualExemption" type="checkbox" name="alanyiAfamentes"/>
-                    <label class="form-check-label" for="individualExemption">Alanyi áfamentes</label>
+            <div class="col-12 form-floating mb-3">
+                <div class="input-group">
+                    <div class="form-floating mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" id="individualExemption" name="individualExemption" type="checkbox" name="alanyiAfamentes"/>
+                            <label class="form-check-label" for="individualExemption">Alanyi áfamentes</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" id="kisadozo" type="checkbox" name="kisadozo"/>
+                            <label class="form-check-label" for="kisadozo">Kisadózó</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <input class="btn btn-lg  btn-outline-secondary" id="submitButton" type="submit" value="Adatok elküldése"/>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" id="kisadozo" type="checkbox" name="kisadozo"/>
-                    <label class="form-check-label" for="kisadozo">Kisadózó</label>
-                </div>
-            </div>
-            <div class="d-grid">
-                <input class="btn btn-secondary" id="submitButton" type="submit" value="Adatok elküldése"/>
             </div>
         </div>
     </form>
