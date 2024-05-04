@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\InvoiceHead;
+use App\Models\TaxNumber;
 use App\Models\TaxPayer;
 use App\Http\Requests\StoreTaxPayerRequest;
 use App\Http\Requests\UpdateTaxPayerRequest;
@@ -32,7 +33,35 @@ class TaxPayerController extends Controller
      */
     public function store(StoreTaxPayerRequest $request)
     {
-        return "Store";
+        $input = $request->validated();
+
+        $taxpayer = new TaxPayer();
+        $taxpayer->communityVatNumber = $input['communityVatNumber'];
+        $taxpayer->incorporation = $input['incorporation'];
+        $taxpayer->individualExemption = $input['individualExemption'];
+        $taxpayer->taxPayerVatStatus = $input['taxPayerVatStatus'];
+        $taxpayer->bankAccountNumber = $input['bankAccountNumber'];
+        $taxpayer->taxPayerName = $input['taxPayerName'];
+        $taxpayer->postalCode = $input['postalCode'];
+        $taxpayer->city = $input['city'];
+        $taxpayer->streetName = $input['streetName'];
+        $taxpayer->publicPlaceCategory = $input['publicPlaceCategory'];
+        $taxpayer->number = $input['number'];
+        $taxpayer->additionalAddressDetail = $input['additionalAddressDetail'];
+        $taxpayer->save();
+
+        //$taxpayer = TaxPayer::create($input);
+        //$taxpayer->fill(['' => '']);
+
+        //$taxnumber = new TaxNumber();
+
+        //$taxpayer = TaxPayer::find($taxpayer);
+        $taxpayer->taxNumber()->create([
+            'taxpayerId' => $input['taxNumber->taxpayerId'],
+            'vatCode' => $input['taxNumber->vatCode'],
+            'countyCode' => $input['taxNumber->countyCode']
+        ]);
+        //$taxnumber->save();
     }
 
     /**

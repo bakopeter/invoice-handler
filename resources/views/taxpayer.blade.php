@@ -46,13 +46,16 @@
                 <div class="alert alert-danger" role="alert">{{$message ?? null}}</div>
             </div>
             @if($taxpayer->trashed())
-            <table style="width: 100%; border-top: #cbd5e0 solid 1px; m-10">
-                <tr style="width: 100%">
-                    <td style="text-align: right; width: 100px; padding: 15px">
-                        <a href="{{route('taxpayers.index')}}">Vissza az adózókhoz</a>
-                    </td>
-                </tr>
-            </table>
+                <table style="width: 100%; border-top: #cbd5e0 solid 1px; m-10">
+                    <tr style="width: 100%">
+                        <td style="text-align: left; width: 50%; padding: 15px">
+                            <a href="{{route('taxpayers.index')}}">Vissza az adózókhoz</a>
+                        </td>
+                        <td style="text-align: right; width: 50%; padding: 15px">
+                            <a href="{{route('invoiceheads.index')}}">Vissza a számlákhoz</a>
+                        </td>
+                    </tr>
+                </table>
             @else
             <table class="table table-borderless">
                 <tbody>

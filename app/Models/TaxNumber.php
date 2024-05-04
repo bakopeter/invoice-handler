@@ -11,4 +11,8 @@ class TaxNumber extends Model
     use HasFactory, SoftDeletes;
 
     public $timestamps = true;
+
+    protected $fillable = [
+        'taxpayerId'
+    ];
 }

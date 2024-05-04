@@ -15,7 +15,12 @@ class TaxPayer extends Model
     use HasFactory, SoftDeletes;
 
     public $timestamps = true;
+    /*
+    protected $fillable = [
 
+    ];
+    */
+    protected $guarded = [];
     public function taxNumber(): BelongsTo
     {
         return $this->belongsTo(TaxNumber::class, 'taxnumber_id','id');

@@ -32,7 +32,7 @@ class StoreTaxPayerRequest extends FormRequest
                 'required',
                 Rule::in(['DOMESTIC', 'PRIVATE_PERSON', 'OTHER'])
             ],
-            //'bankAccountNumber' => ['required', 'string', 'max:255', 'unique:tax_payers,bankAccountNumber'],
+            'bankAccountNumber' => ['required', 'string', 'min:16', 'max:255'],
             'taxPayerName' => ['required', 'string', 'max:512'],
             'postalCode' => ['required', 'string', 'min:4', 'max:10'],
             'city' => ['required', 'string', 'max:255'],
