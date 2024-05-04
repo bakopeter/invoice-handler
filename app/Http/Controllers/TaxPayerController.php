@@ -50,18 +50,17 @@ class TaxPayerController extends Controller
         $taxpayer->additionalAddressDetail = $input['additionalAddressDetail'];
         $taxpayer->save();
 
+        $taxnumber = new TaxNumber();
+        $taxnumber->taxpayerId = $input['taxNumber->taxpayerId'];
+        $taxnumber->vatCode = $input['taxNumber->vatCode'];
+        $taxnumber->countyCode = $input['taxNumber->countyCode'];
+        $taxnumber->save();
+        $taxpayer->taxNumber()->associate($taxnumber);
+        $taxpayer->save();
+
         //$taxpayer = TaxPayer::create($input);
         //$taxpayer->fill(['' => '']);
-
-        //$taxnumber = new TaxNumber();
-
         //$taxpayer = TaxPayer::find($taxpayer);
-        $taxpayer->taxNumber()->create([
-            'taxpayerId' => $input['taxNumber->taxpayerId'],
-            'vatCode' => $input['taxNumber->vatCode'],
-            'countyCode' => $input['taxNumber->countyCode']
-        ]);
-        //$taxnumber->save();
     }
 
     /**
