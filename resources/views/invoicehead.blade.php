@@ -46,7 +46,7 @@
                         <div class="alert alert-danger" role="alert">{{$message ?? null}}</div>
                     </div>
                     @if($invoicehead->trashed())
-                    <table style="width: 100%; border-top: #cbd5e0 solid 1px; m-10">
+                    <table style="width: 100%; border-top: #cbd5e0 solid 1px">
                         <tr style="width: 100%">
                             <td style="text-align: left; width: 50%; padding: 15px">
                                 <a href="{{route('taxpayers.index')}}">Vissza az adózókhoz</a>
@@ -155,7 +155,7 @@
                         </tr>
                         <tr style="border-collapse: collapse">
                             <td colspan="5" style="border-collapse: collapse">
-                                <table style="border-collapse: collapse" ;>
+                                <table style="border-collapse: collapse">
                                     <tr style="border-collapse: collapse">
                                         <td style="border-bottom: #2d3748 solid 1px; border-right: #2d3748 solid 1px; padding: 5px; width: 20rem">
                                             Megnevezés
@@ -232,7 +232,7 @@
                             </td>
                         </tr>
                     </table>
-                    <p style="width: 98%; align-content: end; text-align: right; padding: 5px" ;>
+                    <p style="width: 98%; align-content: end; text-align: right; padding: 5px">
                         <span style="text-align: right; width: 80rem; padding: 5px">Fizetendő összeg:</span>
                         <span style="text-align: right; width: 20rem; padding: 5px; font-weight: bold">{{round($invoicehead->invoiceDetail->invoiceGrossAmount)}} Ft</span>
                     </p>
