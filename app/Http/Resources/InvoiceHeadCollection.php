@@ -14,10 +14,6 @@ class InvoiceHeadCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return [
-            'data' => $this->collection,
-            'success' => true,
-            'message' => ""
-        ];
+        return parent::toArray($request);
     }
 }
