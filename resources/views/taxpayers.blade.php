@@ -38,7 +38,7 @@
 <div class="container-fluid my-4">
     <div class="row align-items-center">
         <div class="col"></div>
-        <div class="col-12 col-xl-10 bg-body-tertiary">
+        <div class="col-12 col-l-10 col-xl-8 bg-body-tertiary">
             <table class="table">
                 <tr>
                     <th style="text-align: left; padding: 10px">Adózók nyilvántartása</th>
@@ -55,14 +55,14 @@
                     <th>Név</th>
                     <th>Bankszámlaszám</th>
                     <th>Lakcím</th>
-                    <th colspan="2">Műveletek</th>
+                    <th>Műveletek</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($taxpayers as $taxpayer)
                 <tr>
                     <td>
-                        <a href="{{ route('taxpayers.show', ['taxpayer' => $taxpayer]) }}">
+                        <a href="{{ route('taxpayers.show', ['taxpayer' => $taxpayer]) }}" style="text-decoration: none">
                             {{$taxpayer->taxPayerName}}
                         </a>
                     </td>
@@ -75,17 +75,17 @@
                         {{$taxpayer->number}}.
                     </td>
                     <td>
-                        <a href="{{ route('taxpayers.edit', ['taxpayer' => $taxpayer]) }}">
-                            Szerkesztés
-                        </a>
-                    </td>
-                    <td>
-                        <form action="{{ route('taxpayers.destroy', ['taxpayer' => $taxpayer]) }}"
-                              method="POST">
-                            @csrf
-                            @method("DELETE")
-                            <input type="submit" value="Törlés">
-                        </form>
+                        <div class="">
+                            <a href="{{ route('taxpayers.edit', ['taxpayer' => $taxpayer]) }}">
+                                <input style="width: 100%;" class="btn btn-sm btn-sm btn-outline-primary mt-1" type="submit" value="Szerkesztés">
+                            </a>
+                            <form action="{{ route('taxpayers.destroy', ['taxpayer' => $taxpayer]) }}"
+                                  method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <input style="width: 100%" class="btn btn-sm btn-outline-danger mt-1 flex-box" type="submit" value="Törlés">
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

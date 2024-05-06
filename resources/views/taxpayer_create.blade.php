@@ -37,9 +37,11 @@
         </div>
     </nav>
 </div>
-
 <div class="container p-4 my-4 bg-body-tertiary">
     <h4 class="mb-3">Adózói adatok</h4>
+    <div style="display:{{$display ?? 'none'}}" class="display-7">
+        <div class="alert alert-danger" role="alert">{{$message ?? null}}</div>
+    </div>
     <form action="{{route('taxpayers.store')}}" method="POST">
         @csrf
         @method('POST')
@@ -94,13 +96,13 @@
                             <label class="ms-2" for="taxNumber->taxpayerId">Törzsszám</label>
                             @error('taxNumber->taxpayerId') <div class="alert alert-danger">{{$message}}</div> @enderror
                         </div>
-                        <div class="input-group-text">-</div>
+                        <span class="input-group-text">-</span>
                         <div class="form-floating">
                             <input value="{{old('taxNumber->vatCode')}}" class="form-control" id="taxNumber->vatCode" name="taxNumber->vatCode" type="text" placeholder="Áfakód"/>
                             <label class="ms-2" for="taxNumber->vatCode">Áfakód</label>
                             @error('taxNumber->vatCode') <div class="alert alert-danger">{{$message}}</div> @enderror
                         </div>
-                        <div class="input-group-text">-</div>
+                        <span class="input-group-text">-</span>
                         <div class="form-floating">
                             <input value="{{old('taxNumber->countyCode')}}" class="form-control" id="taxNumber->countyCode" name="taxNumber->countyCode" type="text" placeholder="Megyekód"/>
                             <label class="ms-2" for="taxNumber->countyCode">Megyekód</label>
@@ -118,13 +120,13 @@
                             <label class="ms-2" for="groupMemberTaxNumber->taxpayerId">Törzsszám</label>
                             @error('groupMemberTaxNumber->taxpayerId') <div class="alert alert-danger">{{$message}}</div> @enderror
                         </div>
-                        <div class="input-group-text">-</div>
+                        <span class="input-group-text">-</span>
                         <div class="form-floating">
                             <input value="{{old('groupMemberTaxNumber->vatCode')}}" class="form-control" id="groupMemberTaxNumber->vatCode" name="groupMemberTaxNumber->vatCode" type="text" placeholder="Áfakód"/>
                             <label class="ms-2" for="groupMemberTaxNumber->vatCode">Áfakód</label>
                             @error('groupMemberTaxNumber->vatCode') <div class="alert alert-danger">{{$message}}</div> @enderror
                         </div>
-                        <div class="input-group-text">-</div>
+                        <span class="input-group-text">-</span>
                         <div class="form-floating">
                             <input value="{{old('groupMemberTaxNumber->countyCode')}}" class="form-control" id="groupMemberTaxNumber->countyCode" name="groupMemberTaxNumber->countyCode" type="text" placeholder="Megyekód"/>
                             <label class="ms-2" for="groupMemberTaxNumber->countyCode">Megyekód</label>
@@ -174,7 +176,7 @@
                         </div>
                     </div>
                     <div class="">
-                        <input class="btn  btn-outline-secondary" id="submitButton" type="submit"
+                        <input class="btn btn-outline-primary mt-2" id="submitButton" type="submit"
                                value="Adatok elküldése"/>
                     </div>
                 </div>

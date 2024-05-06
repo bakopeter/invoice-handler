@@ -69,7 +69,9 @@
                     <td>{{$invoicehead->invoiceNumber ?? "Hiányzik!"}}</td>
                     <td>{{$invoicehead->invoiceIssueDate ?? "Hiányzik!"}}</td>
                     <td>
-                        <a href="{{route('invoiceheads.show', ['invoicehead' => $invoicehead])}}">Részletek</a>
+                        <a style="text-decoration: none" href="{{route('invoiceheads.show', ['invoicehead' => $invoicehead])}}">
+                            Részletek
+                        </a>
                     </td>
                 </tr>
                 @endforeach

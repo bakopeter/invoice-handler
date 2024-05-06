@@ -15,12 +15,14 @@ class TaxPayer extends Model
     use HasFactory, SoftDeletes;
 
     public $timestamps = true;
-    /*
-    protected $fillable = [
 
+    protected $fillable = [
+        'communityVatNumber', 'incorporation', 'individualExemption',
+        'taxPayerVatStatus', 'bankAccountNumber', 'taxPayerName', 'postalCode',
+        'city', 'streetName', 'publicPlaceCategory', 'number', 'additionalAddressDetail'
     ];
-    */
-    protected $guarded = [];
+
+    //protected $guarded = [];
     public function taxNumber(): BelongsTo
     {
         return $this->belongsTo(TaxNumber::class, 'taxnumber_id','id');

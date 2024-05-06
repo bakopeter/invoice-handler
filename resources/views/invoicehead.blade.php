@@ -243,7 +243,7 @@
                                       method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="submit" value="Számla sztornózása">
+                                    <input class="btn btn-outline-primary mt-2" type="submit" value="Számla sztornózása">
                                 </form>
                             </td>
                         </tr>

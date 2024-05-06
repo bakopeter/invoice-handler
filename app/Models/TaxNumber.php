@@ -13,6 +13,6 @@ class TaxNumber extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'taxpayerId'
+        'taxpayerId', 'vatCode', 'countyCode'
     ];
 }
