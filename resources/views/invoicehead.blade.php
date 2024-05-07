@@ -206,7 +206,7 @@
 
                                     </tr>
                                 </table>
-                                <div style="display:{{$display ?? 'block'}}" class="display-7">
+                                <div style="display:{{$display ?? 'none'}}" class="display-7">
                                     <form action="{{route('invoiceheads.update', ['invoicehead' => $invoicehead])}}" method="PUT">
                                         @csrf
                                         @method('PUT')
@@ -312,12 +312,19 @@
                     </p>
                     <table style="width: 100%; border-top: #cbd5e0 solid 1px">
                         <tr style="width: 100%">
-                            <td style="text-align: right; width: 100px; padding: 15px">
+                            <td style="text-align: left; width: 50px; padding: 15px">
+                                <button class="btn btn-outline-primary mt-2" type="button">
+                                    <a href="{{route('invoiceheads.edit', ['invoicehead' => $invoicehead])}}" style="text-decoration: none">
+                                        Számla módosítása
+                                    </a>
+                                </button>
+                            </td>
+                            <td style="text-align: right; width: 50px; padding: 15px">
                                 <form action="{{route('invoiceheads.destroy', ['invoicehead' => $invoicehead])}}"
                                       method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <input class="btn btn-outline-primary mt-2" type="submit" value="Számla sztornózása">
+                                    <input class="btn btn-outline-danger mt-2" type="submit" value="Számla sztornózása">
                                 </form>
                             </td>
                         </tr>

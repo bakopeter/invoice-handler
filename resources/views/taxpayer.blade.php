@@ -46,7 +46,7 @@
                 <div class="alert alert-danger" role="alert">{{$message ?? null}}</div>
             </div>
             @if($taxpayer->trashed())
-                <table style="width: 100%; border-top: #cbd5e0 solid 1px; m-10">
+                <table style="width: 100%; border-top: #cbd5e0 solid 1px">
                     <tr style="width: 100%">
                         <td style="text-align: left; width: 50%; padding: 15px">
                             <a href="{{route('taxpayers.index')}}">Vissza az adózókhoz</a>

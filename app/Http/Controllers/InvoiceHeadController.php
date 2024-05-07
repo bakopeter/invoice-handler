@@ -84,7 +84,11 @@ class InvoiceHeadController extends Controller
      */
     public function edit(InvoiceHead $invoicehead)
     {
-        return view('invoicehead', ['invoicehead' => $invoicehead]);
+        return view('invoicehead', [
+            'invoicehead' => $invoicehead,
+            'message' => "Számla módosítása",
+            'display' => 'block'
+        ]);
     }
 
     /**
