@@ -207,7 +207,7 @@
                                     </tr>
                                 </table>
                                 <div style="display:{{$display ?? 'none'}}" class="display-7">
-                                    <form action="{{route('invoiceheads.update', ['invoicehead' => $invoicehead])}}" method="PUT">
+                                    <form action="{{route('invoiceheads.update', ['invoicehead' => $invoicehead])}}" method="GET">
                                         @csrf
                                         @method('PUT')
                                         <div class="row">
