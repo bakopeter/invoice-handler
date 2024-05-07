@@ -14,6 +14,7 @@ class InvoiceHead extends Model
     use HasFactory, SoftDeletes;
 
     public $timestamps = true;
+    protected $guarded = [];
     public function supplierTP(): BelongsTo
     {
         return $this->belongsTo(TaxPayer::class, 'supplier_id', 'id');

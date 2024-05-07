@@ -11,7 +11,7 @@ class UpdateInvoiceHeadRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class UpdateInvoiceHeadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'lineDescription' => ['required', 'string', 'max:512'],
+            'lineNatureIndicator' => [
+                'required',
+                Rule::in('PRODUCT', 'SERVICE', 'OTHER')
+            ],
+            'quantity' => ['required', 'numeric'],
+            'unitOfMeasure' => ['PIECE', 'HOUR', 'PACKAGE', 'OTHER'],
+            'unitPrice' => ['required', 'numeric'],
+            'lineNetAmount' => ['required', 'numeric'],
+            'vatPercentage' => ['required', 'numeric'],
+            'lineVatAmount' => ['required', 'numeric'],
+            'lineGrossAmount' => ['required', 'numeric'],
         ];
     }
 }

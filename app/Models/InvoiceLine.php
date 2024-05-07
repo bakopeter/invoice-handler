@@ -12,6 +12,7 @@ class InvoiceLine extends Model
     use HasFactory, SoftDeletes;
 
     public $timestamps = true;
+    protected $guarded = [];
     public function InvoiceHead(): BelongsTo
     {
         return $this->belongsTo(InvoiceHead::class, "invoice_head_id", "id");

@@ -27,7 +27,7 @@
                         <a class="nav-link" href="{{route('taxpayers.index')}}">Adózók</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Új számla+</a>
+                        <a class="nav-link" href="{{route('invoiceheads.create')}}">Új számla+</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('taxpayers.create')}}">Új adózó+</a>

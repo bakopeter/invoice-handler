@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreInvoiceHeadRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreInvoiceHeadRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,25 @@ class StoreInvoiceHeadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            /*'invoiceCategory' => [
+                Rule::in('NORMAL', 'SIMPLIFIED')
+            ],*/
+            'invoiceDetail->invoiceDeliveryDate' => ['required','date'],
+            'invoiceDetail->paymentDate' => ['required', 'date'],
+            'invoiceDetail->paymentMethod' => [
+                'required',
+                Rule::in( ['TRANSFER', 'CASH', 'CARD', 'VOUCHER'])
+            ],
+            //'currencyCode' => ['string'],
+            //'exchangeRate' => ['numeric'],
+            //'smallBusinessIndicator' => ['boolean'],
+            'invoiceDetail->invoiceNetAmount' => ['required', 'numeric'],
+            'invoiceDetail->invoiceVatAmount' => ['required', 'numeric'],
+            'invoiceDetail->invoiceGrossAmount' => ['required', 'numeric'],
+            'invoiceNumber' => ['required', 'string', 'max:50', 'unique:invoice_heads,invoiceNumber'],
+            'invoiceIssueDate' => ['required', 'date'],
+            'supplierTP' => ['required'],
+            'customerTP' => ['required']
         ];
     }
 }

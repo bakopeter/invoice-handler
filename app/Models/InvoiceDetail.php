@@ -12,6 +12,7 @@ class InvoiceDetail extends Model
 {
     use HasFactory, SoftDeletes;
     public $timestamps = true;
+    protected $guarded = [];
 
     public function invoiceHead(): HasOne
     {

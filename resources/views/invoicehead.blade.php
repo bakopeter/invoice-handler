@@ -27,7 +27,7 @@
                                 <a class="nav-link" href="{{route('taxpayers.index')}}">Adózók</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Új számla+</a>
+                                <a class="nav-link" href="{{route('invoiceheads.create')}}">Új számla+</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('taxpayers.create')}}">Új adózó+</a>
@@ -186,7 +186,7 @@
                                             {{$invoiceLine->vatPercentage*100}}%
                                         </td>
                                         <td style="border: #2d3748 solid 1px; text-align: right; padding: 5px">
-                                            {{round($invoiceLine->quantity)}} adag
+                                            {{round($invoiceLine->quantity)}}
                                         </td>
                                         <td style="border: #2d3748 solid 1px; text-align: right; padding: 5px">
                                             {{round($invoiceLine->unitPrice, 2)}}
@@ -202,7 +202,81 @@
                                         </td>
                                     </tr>
                                     @endforeach
+                                    <tr>
+
+                                    </tr>
                                 </table>
+                                <div style="display:{{$display ?? 'block'}}" class="display-7">
+                                    <form action="{{route('invoiceheads.update', ['invoicehead' => $invoicehead])}}" method="PUT">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="row">
+                                            <div class="col-12 col-md-3 form-floating mb-1">
+                                                <select class="form-select border-0 border-bottom" id="lineNatureIndicator" name="lineNatureIndicator"
+                                                        aria-label="Termék/szolgáltatás">
+                                                    <option value="PRODUCT" @selected(old('lineNatureIndicator') == 'PRODUCT')>Termék</option>
+                                                    <option value=" SERVICE" @selected(old('lineNatureIndicator') == ' SERVICE')>Szolgáltatás</option>
+                                                    <option value="OTHER" @selected(old('lineNatureIndicator') == 'OTHER')>Egyéb</option>
+                                                </select>
+                                                <label class="ms-2" for="lineNatureIndicator">Termék/szolgáltatás</label>
+                                                @error('lineNatureIndicator') <div class="alert alert-danger">{{$message}}</div> @enderror
+                                            </div>
+                                            <div class="col-12 col-md-3 form-floating mb-1">
+                                                <input value="{{old('lineDescription')}}" id="lineDescription" name="lineDescription" type="text"
+                                                       placeholder="* Megnevezés"  class="form-control border-0 border-bottom"/>
+                                                <label class="ms-2" for="lineDescription">* Megnevezés</label>
+                                                @error('lineDescription') <div class="alert alert-danger">{{$message}}</div> @enderror
+                                            </div>
+                                            <div class="col-12 col-md-3 form-floating mb-1">
+                                                <input value="{{old('quantity')}}" class="form-control border-0 border-bottom" id="quantity"
+                                                       name="quantity" type="text" placeholder="* Mennyiség"/>
+                                                <label class="ms-2" for="quantity">* Mennyiség</label>
+                                                @error('quantity') <div class="alert alert-danger">{{$message}}</div> @enderror
+                                            </div>
+                                            <div class="col-12 col-md-3 form-floating mb-1">
+                                                <input value="{{old('unitPrice')}}" class="form-control border-0 border-bottom" id="unitPrice"
+                                                       name="unitPrice" type="text" placeholder="* Egységár"/>
+                                                <label class="ms-2" for="unitPrice">* Egységár</label>
+                                                @error('unitPrice') <div class="alert alert-danger">{{$message}}</div> @enderror
+                                            </div>
+                                            <div class="col-12 col-md-3 form-floating mb-1">
+                                                <input value="{{old('lineNetAmount')}}" class="form-control border-0 border-bottom"
+                                                       id="lineNetAmount" name="lineNetAmount" type="text" placeholder="* Netto érték"/>
+                                                <label class="ms-2" for="lineNetAmount">* Netto érték</label>
+                                                @error('lineNetAmount') <div class="alert alert-danger">{{$message}}</div> @enderror
+                                            </div>
+                                            <div class="col-12 col-md-3 form-floating mb-1">
+                                                <input value="{{old('vatPercentage')}}" class="form-control border-0 border-bottom"
+                                                       id="vatPercentage" name="vatPercentage" type="text" placeholder="* ÁFA mértéke"/>
+                                                <label class="ms-2" for="vatPercentage">* ÁFA mértéke</label>
+                                                @error('vatPercentage') <div class="alert alert-danger">{{$message}}</div> @enderror
+                                            </div>
+                                            <div class="col-12 col-md-3 form-floating mb-1">
+                                                <input value="{{old('lineVatAmount')}}" class="form-control border-0 border-bottom"
+                                                       id="lineVatAmount" name="lineVatAmount" type="text" placeholder="* ÁFA összege"/>
+                                                <label class="ms-2" for="lineVatAmount">* ÁFA összege</label>
+                                                @error('lineVatAmount') <div class="alert alert-danger">{{$message}}</div> @enderror
+                                            </div>
+                                            <div class="col-12 col-md-3 form-floating mb-1">
+                                                <input value="{{old('lineGrossAmount')}}" class="form-control border-0 border-bottom"
+                                                       id="lineGrossAmount" name="lineGrossAmount" type="text" placeholder="* Összesen"/>
+                                                <label class="ms-2" for="lineGrossAmount">* Összesen</label>
+                                                @error('lineGrossAmount') <div class="alert alert-danger">{{$message}}</div> @enderror
+                                            </div>
+                                            <div class="col-12 form-floating mb-1">
+                                                <input class="btn btn-outline-primary border-0 border-bottom pt-2 pb-3 col-12 text-end"
+                                                           id="submitButton" type="submit" value="Számlatétel hozzáadása"/>
+                                            </div>
+                                            <div>
+                                                @if($errors->any())
+                                                    @foreach ($errors->all() as $error)
+                                                        <div>{{ $error }}</div>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         <tr>
