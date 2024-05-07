@@ -97,7 +97,26 @@ class InvoiceHeadController extends Controller
     public function update(UpdateInvoiceHeadRequest $request, InvoiceHead $invoicehead)
     {
         $input = $request->validated();
-        dd($request);
+        //dd($request);
+        $invoiceline = new InvoiceLine([
+            'lineDescription' => $input['lineDescription'],
+            'lineNatureIndicator' => $input['lineNatureIndicator'],
+            'quantity' => $input['quantity'],
+            'unitOfMeasure' => 'PIECE',
+            'unitPrice' => $input['unitPrice'],
+            'lineNetAmount' => $input['lineNetAmount'],
+            'vatPercentage' => $input['vatPercentage'],
+            'lineVatAmount' => $input['lineVatAmount'],
+            'lineGrossAmount' => $input['lineGrossAmount']
+        ]);
+        $invoiceline->InvoiceHead()->associate($invoicehead);
+
+        if ($invoiceline->save()) {return view('invoicehead', [
+            'invoicehead' => $invoicehead,
+            'message' => "$invoicehead->invoiceNumber számú számlát sikeresen hozzáadtuk az adatbázishoz!",
+            'display' => 'block'
+        ]);
+        }
     }
 
     /**

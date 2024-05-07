@@ -207,10 +207,10 @@
                                     </tr>
                                 </table>
                                 <div style="display:{{$display ?? 'none'}}" class="display-7">
-                                    <form action="{{route('invoiceheads.update', ['invoicehead' => $invoicehead])}}" method="GET">
+                                    <form action="{{route('invoiceheads.update', ['invoicehead' => $invoicehead])}}" method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <div class="row">
+                                        <div class="row mt-2">
                                             <div class="col-12 col-md-3 form-floating mb-1">
                                                 <select class="form-select border-0 border-bottom" id="lineNatureIndicator" name="lineNatureIndicator"
                                                         aria-label="Termék/szolgáltatás">
@@ -263,16 +263,23 @@
                                                 <label class="ms-2" for="lineGrossAmount">* Összesen</label>
                                                 @error('lineGrossAmount') <div class="alert alert-danger">{{$message}}</div> @enderror
                                             </div>
-                                            <div class="col-12 form-floating mb-1">
-                                                <input class="btn btn-outline-primary border-0 border-bottom pt-2 pb-3 col-12 text-end"
-                                                           id="submitButton" type="submit" value="Számlatétel hozzáadása"/>
-                                            </div>
-                                            <div>
-                                                @if($errors->any())
-                                                    @foreach ($errors->all() as $error)
-                                                        <div>{{ $error }}</div>
-                                                    @endforeach
-                                                @endif
+                                            <div class="col-12 mb-1 align-content-between">
+                                                <table style="width: 100%">
+                                                    <tr>
+                                                        <td style="width: 50%">
+                                                            <button class="btn btn-outline-primary border-0 pt-2 pb-3"
+                                                                    id="submitButton" type="button">
+                                                                <a style="text-decoration: none" href="{{route('invoiceheads.show', ['invoicehead' => $invoicehead])}}">
+                                                                    Számla mentése
+                                                                </a>
+                                                            </button>
+                                                        </td>
+                                                        <td style="text-align: end">
+                                                            <input class="btn btn-outline-primary border-0 pt-2 pb-3"
+                                                                   id="submitButton" type="submit" value="Számlatétel hozzáadása"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
                                         </div>
                                     </form>
@@ -312,16 +319,8 @@
                     </p>
                     <table style="width: 100%; border-top: #cbd5e0 solid 1px">
                         <tr style="width: 100%">
-                            <td style="text-align: left; width: 50px; padding: 15px">
-                                <button class="btn btn-outline-primary mt-2" type="button">
-                                    <a href="{{route('invoiceheads.edit', ['invoicehead' => $invoicehead])}}" style="text-decoration: none">
-                                        Számla módosítása
-                                    </a>
-                                </button>
-                            </td>
-                            <td style="text-align: right; width: 50px; padding: 15px">
-                                <form action="{{route('invoiceheads.destroy', ['invoicehead' => $invoicehead])}}"
-                                      method="POST">
+                            <td style="text-align: right; width: 100px; padding: 15px">
+                                <form action="{{route('invoiceheads.destroy', ['invoicehead' => $invoicehead])}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input class="btn btn-outline-danger mt-2" type="submit" value="Számla sztornózása">

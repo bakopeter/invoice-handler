@@ -76,11 +76,7 @@
                     </td>
                     <td>
                         <div class="">
-                            <a href="{{ route('taxpayers.edit', ['taxpayer' => $taxpayer]) }}">
-                                <input style="width: 100%;" class="btn btn-sm btn-sm btn-outline-primary mt-1" type="submit" value="Szerkesztés">
-                            </a>
-                            <form action="{{ route('taxpayers.destroy', ['taxpayer' => $taxpayer]) }}"
-                                  method="POST">
+                            <form action="{{ route('taxpayers.destroy', ['taxpayer' => $taxpayer]) }}" method="POST">
                                 @csrf
                                 @method("DELETE")
                                 <input style="width: 100%" class="btn btn-sm btn-outline-danger mt-1 flex-box" type="submit" value="Törlés">
